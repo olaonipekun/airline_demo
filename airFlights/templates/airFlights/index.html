@@ -1,0 +1,10 @@
+{% extends 'airFlights/layout.html' %}
+
+{% block body %} 
+<h1> Flights </h1>
+<ul>
+    {% for airflight in airflights %} 
+        <li> Flight {{ airflight.id }}: {{ airflight.flight_origin }} to {{ airflight.flight_destination }} </li>
+    {% endfor %}
+</ul>
+{% endblock %} 
