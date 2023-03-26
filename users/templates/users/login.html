@@ -1,6 +1,16 @@
 {% extends 'users/layout.html' %}
-
+{% block title %}
+    Users Login
+{% endblock %}
 {% block body %} 
-<h1> users </h1>
+    <h1> Users Login </h1>
 
+    <form action="{% url 'flightUsers:login' %}" method="post">
+        {% csrf_token %}
+        <label for="username"> Username </label>
+        <input type="text" name="username" id="" placeholder="e.g johndoe">
+        <label for="password"> Password </label>
+        <input type="password" name="password" id="" placeholder="8 characters or more">
+        <input type="submit" value="Login">
+    </form>
 {% endblock %} 
