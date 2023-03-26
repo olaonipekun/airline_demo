@@ -1,0 +1,14 @@
+{% extends 'users/layout.html' %}
+{% block title %}
+    {{ request.user.first_name }}
+{% endblock %}
+{% block body %} 
+    <h1> Users Login Successful </h1>
+    <h2> Welcome {{ request.user.first_name }}</h2>
+
+    <ul>
+        <li> Username: {{ request.user.username }} </li>
+        <li> Email: {{ request.user.email }} </li>
+    </ul>
+    <a href="{% url 'flightUsers:logout' %}"> Log out </a>
+{% endblock %}

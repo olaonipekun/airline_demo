@@ -5,6 +5,10 @@
 {% block body %} 
     <h1> Users Login </h1>
 
+    {% if message %}
+        <div> {{ message }} </div>
+    {% endif %}
+
     <form action="{% url 'flightUsers:login' %}" method="post">
         {% csrf_token %}
         <label for="username"> Username </label>

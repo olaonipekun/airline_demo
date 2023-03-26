@@ -7,6 +7,7 @@ from django.urls import reverse
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("flightUsers:login"))
+    return render(request, "users/user.html")
 
 def login_view(request):
     if request.method == "POST":
@@ -15,8 +16,15 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("flightUser:index"))
+            return HttpResponseRedirect(reverse("flightUsers:index"))
+        else:
+            return render(request, "users/login.html", {
+                "message": "Invalid Credentials",
+            })
     return render(request, "users/login.html")
 
 def logout_view(request):
-    return(request, "users/logout.html")
+    logout(request)
+    return render(request, "users/logout.html", {
+        "message": "Logged Out"
+    })

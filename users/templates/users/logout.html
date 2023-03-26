@@ -3,6 +3,9 @@
     Users Logout
 {% endblock %}
 {% block body %} 
-    <h1> Logout Successful </h1>
-
+    {% if message %}
+        <h1> {{ message }} </h1>
+    {% endif %}
+    <h2> Please come back next time </h2>
+    <a href="{% url 'flightUsers:login' %}"> Login again </a>
 {% endblock %}
